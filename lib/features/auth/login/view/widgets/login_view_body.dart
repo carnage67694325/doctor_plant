@@ -31,7 +31,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         child: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state is LoginSuccess) {
-              successSnackBar(context, "Register");
+              GoRouter.of(context).push(AppRouter.kDrHub);
             } else if (state is LoginFaiulre) {
               errorSnackBar(context, state.erroMessage);
               log(state.erroMessage);
@@ -60,7 +60,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   PasswordTextField(
                     controller: _passwordController,
                     hintText: 'Enter your password',
-                    showStrengthIndicator: true,
                     onChanged: (value) {
                       log('Password changed');
                     },

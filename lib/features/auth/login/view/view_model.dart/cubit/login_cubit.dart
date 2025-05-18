@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:doct_plant/constants/endpoints.dart';
+import 'package:doct_plant/core/Preferences/prefs_handler.dart';
 import 'package:doct_plant/core/errors/failure.dart';
 import 'package:doct_plant/core/utils/api_service.dart';
 import 'package:meta/meta.dart';
@@ -17,11 +18,17 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
 
     try {
-      await apiService.post(endpoint: Endpoints.kLogin, body: {
+      var resposne = await apiService.post(endpoint: Endpoints.kLogin, body: {
         "email": email,
         "password": password,
       });
+
       emit(LoginSuccess());
+      if (resposne['token'] != null) {
+        final token = resposne['token'];
+        await PrefasHandelr.storeToken(
+            token); // Store the token in SharedPreferences
+      }
       return right(null);
     } on DioException catch (dioError) {
       final failure = ServerFailure.fromDioException(dioError);

@@ -1,4 +1,5 @@
 import 'package:doct_plant/constants/assets.dart';
+import 'package:doct_plant/core/Preferences/prefs_handler.dart';
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/features/splash/widgets/animated_logo.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(const Duration(milliseconds: 2200), () {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) {
-          GoRouter.of(context).go(AppRouter.kHomeView);
+          PrefasHandelr.checkAuthToken(context);
         }
       });
     });

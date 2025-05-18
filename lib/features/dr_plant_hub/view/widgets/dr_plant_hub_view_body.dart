@@ -1,9 +1,11 @@
 import 'package:doct_plant/constants/assets.dart';
 import 'package:doct_plant/core/utils/appcolor.dart';
+import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
 import 'package:doct_plant/features/dr_plant_hub/view/widgets/hub_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class DrPlantHubViewBody extends StatelessWidget {
   const DrPlantHubViewBody({super.key});
@@ -41,13 +43,15 @@ class DrPlantHubViewBody extends StatelessWidget {
                     HubTile(
                       onTap: () {},
                       text: "Upload Image",
-                      icon: Icons.add_photo_alternate,
+                      icon: Icons.cloud_upload,
                     ),
                     SizedBox(
                       width: 10.w,
                     ),
                     HubTile(
-                      onTap: () {},
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kComm);
+                      },
                       text: "Common Diseases",
                       icon: Icons.travel_explore,
                     ),

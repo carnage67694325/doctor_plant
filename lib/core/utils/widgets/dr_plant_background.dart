@@ -10,8 +10,8 @@ class DrPlantBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: height ?? double.infinity,
-      height: width ?? double.infinity,
+      width: width ?? double.infinity,
+      height: height ?? double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(Assets.assetsBackground),
