@@ -1,9 +1,10 @@
-import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: "lib/.env");
   runApp(const DoctorPlant());
 }
 
