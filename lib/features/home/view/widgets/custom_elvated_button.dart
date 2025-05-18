@@ -19,7 +19,7 @@ class CustomElvatedButton extends StatelessWidget {
           minimumSize: Size(300.w, 50.h),
           backgroundColor: backgroundColor ?? AppColors.loginButtonColor,
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: child);
   }
 }
