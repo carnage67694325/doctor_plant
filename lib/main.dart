@@ -20,9 +20,6 @@ class DoctorPlant extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData.dark(useMaterial3: false).copyWith(
-            scaffoldBackgroundColor: AppColors.primaryColor,
-          ),
           routerConfig: AppRouter.router,
         );
       },

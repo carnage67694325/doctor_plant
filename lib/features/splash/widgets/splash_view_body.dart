@@ -32,7 +32,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   Widget build(BuildContext context) {
     return Scaffold(
         body: FlickeringAnimatedLogo(
-      logo: Image.asset(Assets.assetsBackground),
+      logo: Image.asset(Assets.assetsLogo),
     ));
   }
 
