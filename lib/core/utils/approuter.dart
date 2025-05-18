@@ -5,8 +5,8 @@ import 'package:doct_plant/features/auth/login/view/login_view.dart';
 import 'package:doct_plant/features/auth/login/view/view_model.dart/cubit/login_cubit.dart';
 import 'package:doct_plant/features/auth/register/view/register_view.dart';
 import 'package:doct_plant/features/auth/register/view_model.dart/cubit/register_cubit.dart';
+import 'package:doct_plant/features/dr_plant_hub/view/dr_plant_hub_view.dart';
 import 'package:doct_plant/features/home/view/home_view.dart';
-import 'package:doct_plant/features/splash/splash_veiw.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,7 +19,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const SplashView(),
+        builder: (context, state) => const DrPlantHubView(),
       ),
       GoRoute(
         path: kHomeView,

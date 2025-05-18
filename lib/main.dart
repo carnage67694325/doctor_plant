@@ -1,3 +1,4 @@
+import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -21,6 +22,10 @@ class DoctorPlant extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.primaryColor,
+            useMaterial3: false,
+          ),
           routerConfig: AppRouter.router,
         );
       },
