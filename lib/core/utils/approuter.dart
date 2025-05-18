@@ -1,7 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:doct_plant/core/utils/animations/transition_animation.dart';
+import 'package:doct_plant/core/utils/api_service.dart';
 import 'package:doct_plant/features/auth/login/view/login_view.dart';
+import 'package:doct_plant/features/auth/login/view/view_model.dart/cubit/login_cubit.dart';
 import 'package:doct_plant/features/home/view/home_view.dart';
 import 'package:doct_plant/features/splash/splash_veiw.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
@@ -29,7 +33,10 @@ abstract class AppRouter {
         pageBuilder: (context, state) {
           return TransitionAnimation.zoomInAnimatition(
             state,
-            route: const LoginView(),
+            route: BlocProvider(
+              create: (context) => LoginCubit(ApiService(Dio())),
+              child: const LoginView(),
+            ),
           );
         },
       ),
