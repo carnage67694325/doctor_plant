@@ -37,7 +37,9 @@ class HomeViewBody extends StatelessWidget {
               height: 35.h,
             ),
             CustomElvatedButton(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.kRegister);
+              },
               backgroundColor: AppColors.signUpButtoColor,
               child: const Text('Register',
                   style: TextStyle(

@@ -78,7 +78,7 @@ class _EmailTextFieldState extends State<EmailTextField> {
         autocorrect: false,
         decoration: InputDecoration(
           prefixIcon: const Icon(
-            Icons.person,
+            Icons.email,
             color: Color(0xff99A1AF),
             size: 40,
           ),

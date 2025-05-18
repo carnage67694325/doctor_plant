@@ -3,6 +3,8 @@ import 'package:doct_plant/core/utils/animations/transition_animation.dart';
 import 'package:doct_plant/core/utils/api_service.dart';
 import 'package:doct_plant/features/auth/login/view/login_view.dart';
 import 'package:doct_plant/features/auth/login/view/view_model.dart/cubit/login_cubit.dart';
+import 'package:doct_plant/features/auth/register/view/register_view.dart';
+import 'package:doct_plant/features/auth/register/view_model.dart/cubit/register_cubit.dart';
 import 'package:doct_plant/features/home/view/home_view.dart';
 import 'package:doct_plant/features/splash/splash_veiw.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +38,18 @@ abstract class AppRouter {
             route: BlocProvider(
               create: (context) => LoginCubit(ApiService(Dio())),
               child: const LoginView(),
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: kRegister,
+        pageBuilder: (context, state) {
+          return TransitionAnimation.zoomInAnimatition(
+            state,
+            route: BlocProvider(
+              create: (context) => RegisterCubit(ApiService(Dio())),
+              child: const RegisterView(),
             ),
           );
         },

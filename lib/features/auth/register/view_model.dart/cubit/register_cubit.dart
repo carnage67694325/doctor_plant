@@ -6,30 +6,34 @@ import 'package:doct_plant/core/errors/failure.dart';
 import 'package:doct_plant/core/utils/api_service.dart';
 import 'package:meta/meta.dart';
 
-part 'login_state.dart';
+part 'register_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class RegisterCubit extends Cubit<RegisterState> {
   final ApiService apiService;
-
-  LoginCubit(this.apiService) : super(LoginInitial());
-
-  Future<Either<Failure, void>> login(String email, String password) async {
-    emit(LoginLoading());
+  RegisterCubit(this.apiService) : super(RegisterInitial());
+  Future<Either<Failure, void>> register(
+      {required String email,
+      required String password,
+      required String name,
+      required String confirmPassword}) async {
+    emit(RegisterLoading());
 
     try {
-      await apiService.post(endpoint: Endpoints.kLogin, body: {
+      await apiService.post(endpoint: Endpoints.kRegister, body: {
+        "name": name,
         "email": email,
         "password": password,
+        "confirmPassword": confirmPassword,
       });
-      emit(LoginSuccess());
+      emit(RegisterSuccess());
       return right(null);
     } on DioException catch (dioError) {
       final failure = ServerFailure.fromDioException(dioError);
-      emit(LoginFaiulre(erroMessage: failure.errMessage));
+      emit(RegisterFailure(erroMessage: failure.errMessage));
       return left(failure);
     } catch (e) {
       final failure = ServerFailure(e.toString());
-      emit(LoginFaiulre(erroMessage: failure.errMessage));
+      emit(RegisterFailure(erroMessage: failure.errMessage));
       return left(failure);
     }
   }
