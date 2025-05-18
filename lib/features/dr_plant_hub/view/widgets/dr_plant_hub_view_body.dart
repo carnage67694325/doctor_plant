@@ -76,7 +76,9 @@ class DrPlantHubViewBody extends StatelessWidget {
                       width: 10.w,
                     ),
                     HubTile(
-                      onTap: () {},
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kFert);
+                      },
                       text: "Fertilizers",
                       icon: Icons.lightbulb_circle_rounded,
                     ),

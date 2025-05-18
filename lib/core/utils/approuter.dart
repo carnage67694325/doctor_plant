@@ -7,6 +7,7 @@ import 'package:doct_plant/features/auth/register/view/register_view.dart';
 import 'package:doct_plant/features/auth/register/view_model.dart/cubit/register_cubit.dart';
 import 'package:doct_plant/features/common_diseases/view/common_dis_view.dart';
 import 'package:doct_plant/features/dr_plant_hub/view/dr_plant_hub_view.dart';
+import 'package:doct_plant/features/fertillizer/view/fertillizer_view.dart';
 import 'package:doct_plant/features/home/view/home_view.dart';
 import 'package:doct_plant/features/splash/splash_veiw.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,7 @@ abstract class AppRouter {
   static final kLogin = '/login';
   static final kRegister = '/register';
   static final kComm = '/comm';
-
+  static final kFert = '/fert';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -79,6 +80,18 @@ abstract class AppRouter {
             route: BlocProvider(
               create: (context) => RegisterCubit(ApiService(Dio())),
               child: const CommonDisView(),
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: kFert,
+        pageBuilder: (context, state) {
+          return TransitionAnimation.zoomInAnimatition(
+            state,
+            route: BlocProvider(
+              create: (context) => RegisterCubit(ApiService(Dio())),
+              child: const FertillizerView(),
             ),
           );
         },
