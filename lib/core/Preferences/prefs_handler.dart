@@ -64,4 +64,24 @@ class PrefasHandelr {
         .remove('auth_token'); // Removes the token from SharedPreferences
     log('Auth token cleared successfully.');
   }
+
+  static Future<void> storeUserProfileImagePath(String imagePath) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('stored_user_profile_image_path', imagePath);
+  }
+
+  static Future<String?> retrieveStoredUserProfileImagePath() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('stored_user_profile_image_path');
+  }
+
+  static Future<void> storeImageToken(String imagePath) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('image_token', imagePath);
+  }
+
+  static Future<String?> getImageToken() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('image_token');
+  }
 }

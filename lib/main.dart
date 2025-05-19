@@ -21,7 +21,6 @@ class DoctorPlant extends StatelessWidget {
       designSize: const Size(393, 915),
       minTextAdapt: true,
       splitScreenMode: true,
-      // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,

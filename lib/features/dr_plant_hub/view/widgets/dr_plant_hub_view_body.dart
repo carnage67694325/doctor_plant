@@ -1,5 +1,3 @@
-import 'package:doct_plant/constants/assets.dart';
-import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
 import 'package:doct_plant/features/dr_plant_hub/view/widgets/hub_tile.dart';
@@ -41,7 +39,9 @@ class DrPlantHubViewBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     HubTile(
-                      onTap: () {},
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kPlantDiag);
+                      },
                       text: "Upload Image",
                       icon: Icons.cloud_upload,
                     ),

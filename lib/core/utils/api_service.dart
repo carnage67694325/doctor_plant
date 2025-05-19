@@ -28,4 +28,21 @@ class ApiService {
         options: Options(headers: {'Content-Type': 'application/json'}));
     return response.data;
   }
+
+  Future<Map<String, dynamic>> postImage(
+      {required String endpoint,
+      required FormData body,
+      required String userToken}) async {
+    var response = await dio.post(
+      '$baseUrl$endpoint',
+      data: body,
+      options: Options(
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Authorization": "Bearer $userToken",
+        },
+      ),
+    );
+    return response.data;
+  }
 }
