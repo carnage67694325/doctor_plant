@@ -26,23 +26,7 @@ class PlantDiagnosisViewBody extends StatelessWidget {
             height: 20.h,
           ),
           CustomElvatedButton(
-            onPressed: () async {
-              String? userToken = await PrefasHandelr.getAuthToken();
-              String? imagePath = await PrefasHandelr.getImage();
-              log(imagePath.toString());
-              log(userToken.toString());
-              if (userToken == null || imagePath == null) {
-                // Handle missing data
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Missing image or user token")),
-                );
-                return;
-              }
-
-              File imageFile = File(imagePath);
-              BlocProvider.of<PlantDiagonsisCubit>(context)
-                  .uploadImageToAPI(imageFile, userToken);
-            },
+            onPressed: () async {},
             child: Text(
               "Analyze",
               style: TextStyle(color: AppColors.primaryColor, fontSize: 23.sp),
