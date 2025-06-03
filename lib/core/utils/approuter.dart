@@ -5,6 +5,7 @@ import 'package:doct_plant/features/auth/login/view/login_view.dart';
 import 'package:doct_plant/features/auth/login/view/view_model.dart/cubit/login_cubit.dart';
 import 'package:doct_plant/features/auth/register/view/register_view.dart';
 import 'package:doct_plant/features/auth/register/view_model.dart/cubit/register_cubit.dart';
+import 'package:doct_plant/features/chat_bot/view/chat_bot_view.dart';
 import 'package:doct_plant/features/common_diseases/view/common_dis_view.dart';
 import 'package:doct_plant/features/dr_plant_hub/view/dr_plant_hub_view.dart';
 import 'package:doct_plant/features/fertillizer/view/fertillizer_view.dart';
@@ -25,6 +26,8 @@ abstract class AppRouter {
   static final kComm = '/comm';
   static final kFert = '/fert';
   static final kPlantDiag = '/PlantDiag';
+  static final kChatbot = '/chatbot';
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -116,6 +119,15 @@ abstract class AppRouter {
               ],
               child: const PlantDiagnosisView(),
             ),
+          );
+        },
+      ),
+      GoRoute(
+        path: kChatbot,
+        pageBuilder: (context, state) {
+          return TransitionAnimation.zoomInAnimatition(
+            state,
+            route: const ChatBotView(),
           );
         },
       ),

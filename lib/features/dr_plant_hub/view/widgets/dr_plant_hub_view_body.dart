@@ -18,7 +18,9 @@ class DrPlantHubViewBody extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kChatbot);
+            },
             icon: Icon(Icons.smart_toy, size: 35.h),
           )
         ],
