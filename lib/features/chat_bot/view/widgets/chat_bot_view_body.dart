@@ -4,6 +4,7 @@ import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
 import 'package:doct_plant/features/chat_bot/view/view_model/cubit/chatbot_cubit.dart';
 import 'package:doct_plant/features/chat_bot/view/widgets/chat_bot_messages_list.dart';
 import 'package:doct_plant/features/chat_bot/view/widgets/chat_bubble.dart';
+import 'package:doct_plant/features/chat_bot/view/widgets/chatbot_response.dart';
 import 'package:doct_plant/features/chat_bot/view/widgets/send_prompt_textfiled.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,7 +67,10 @@ class _ChatBotViewBodyState extends State<ChatBotViewBody> {
               messages.add(
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0.h),
-                  child: ChatBubble(message: state.response),
+                  child: ChatBubble(
+                    message: state.response,
+                    isSender: false,
+                  ),
                 ),
               );
               setState(() {});

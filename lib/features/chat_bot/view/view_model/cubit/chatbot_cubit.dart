@@ -3,16 +3,14 @@ import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
 import 'package:doct_plant/core/utils/api_service.dart';
 import 'package:meta/meta.dart';
-import 'package:doct_plant/core/errors/failure.dart'; // Adjust the import based on your project structure
+import 'package:doct_plant/core/errors/failure.dart'; // Adjust if needed
 
 part 'chatbot_state.dart';
 
 class ChatbotCubit extends Cubit<ChatbotState> {
   final Dio dio;
 
-  ChatbotCubit({
-    required this.dio,
-  }) : super(ChatbotInitial());
+  ChatbotCubit({required this.dio}) : super(ChatbotInitial());
 
   Future<Either<Failure, String>> sendPrompt(String prompt) async {
     if (prompt.isEmpty) {
@@ -28,9 +26,11 @@ class ChatbotCubit extends Cubit<ChatbotState> {
     try {
       final response = await dio.post(
         url!,
-        options: Options(headers: {
-          'Content-Type': 'application/json',
-        }),
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
         data: {
           "contents": [
             {
@@ -43,12 +43,15 @@ class ChatbotCubit extends Cubit<ChatbotState> {
       );
 
       final data = response.data;
-      if (data['candidates'] != null && data['candidates'].isNotEmpty) {
-        final text = data['candidates'][0]['content'];
+
+      // ✅ Check for deeply nested structure: candidates > content > parts > text
+      final text = data['candidates']?[0]?['content']?['parts']?[0]?['text'];
+
+      if (text != null && text is String) {
         emit(ChatbotSuccess(text));
         return right(text);
       } else {
-        final failure = ServerFailure("No response from AI");
+        final failure = ServerFailure("Invalid or missing AI response");
         emit(ChatbotFailure(errMessage: failure.errMessage));
         return left(failure);
       }

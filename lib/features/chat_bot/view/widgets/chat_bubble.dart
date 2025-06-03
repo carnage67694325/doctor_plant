@@ -1,6 +1,7 @@
 import 'package:chat_bubbles/bubbles/bubble_special_one.dart';
 import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatBubble extends StatefulWidget {
   final String message;
@@ -51,6 +52,7 @@ class _ChatBubbleState extends State<ChatBubble>
       scale: _scaleAnimation,
       child: BubbleSpecialOne(
         text: widget.message,
+        textStyle: TextStyle(color: Colors.white, fontSize: 16.sp),
         color: AppColors.tileColor,
         isSender: widget.isSender ?? true,
       ),
