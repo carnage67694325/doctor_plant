@@ -28,8 +28,7 @@ class _UploadImageCardState extends State<UploadImageCard> {
       builder: (context, state) {
         return GestureDetector(
             onTap: () {
-              BlocProvider.of<PlantDiagonsisCubit>(context)
-                  .pickUserProfileImage();
+              BlocProvider.of<PlantDiagonsisCubit>(context).pickImage();
             },
             child: Container(
                 decoration: BoxDecoration(

@@ -20,9 +20,9 @@ class PrefasHandelr {
     return prefs.getString('auth_token');
   }
 
-  static Future<String?> getUserProfileImage() async {
+  static Future<String?> getImage() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('profile_image');
+    return prefs.getString('stored_user_profile_image_path');
   }
 
   static Future<void> saveUserProfileImage(String profileImage) async {

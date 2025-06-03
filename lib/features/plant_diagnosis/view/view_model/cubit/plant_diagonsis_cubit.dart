@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:http_parser/http_parser.dart';
+import 'package:mime/mime.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -17,7 +18,7 @@ class PlantDiagonsisCubit extends Cubit<PlantDiagonsisState> {
   PlantDiagonsisCubit(
     this.apiService,
   ) : super(PlantDiagonsisInitial());
-  Future<void> pickUserProfileImage() async {
+  Future<void> pickImage() async {
     try {
       emit(PlantDiagonsisLoading()); // Show loading state
 
@@ -49,7 +50,11 @@ class PlantDiagonsisCubit extends Cubit<PlantDiagonsisState> {
       File file, String userToken) async {
     try {
       final formData = FormData.fromMap({
-        'File': await MultipartFile.fromFile(file.path),
+        'File': await MultipartFile.fromFile(
+          file.path,
+          contentType:
+              MediaType.parse(lookupMimeType(file.path) ?? 'image/png'),
+        ),
       });
 
       final response = await apiService.postImage(

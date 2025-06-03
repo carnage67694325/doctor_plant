@@ -1,7 +1,9 @@
 import 'package:doct_plant/core/Preferences/prefs_handler.dart';
+import 'package:doct_plant/core/simple_bloc_observer.dart';
 import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,6 +11,7 @@ void main() async {
   await PrefasHandelr.init();
 
   await dotenv.load(fileName: "lib/.env");
+  Bloc.observer = SimpleBlocObserver();
   runApp(const DoctorPlant());
 }
 
