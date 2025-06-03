@@ -6,6 +6,7 @@ import 'package:doct_plant/features/auth/login/view/view_model.dart/cubit/login_
 import 'package:doct_plant/features/auth/register/view/register_view.dart';
 import 'package:doct_plant/features/auth/register/view_model.dart/cubit/register_cubit.dart';
 import 'package:doct_plant/features/chat_bot/view/chat_bot_view.dart';
+import 'package:doct_plant/features/chat_bot/view/view_model/cubit/chatbot_cubit.dart';
 import 'package:doct_plant/features/common_diseases/view/common_dis_view.dart';
 import 'package:doct_plant/features/dr_plant_hub/view/dr_plant_hub_view.dart';
 import 'package:doct_plant/features/fertillizer/view/fertillizer_view.dart';
@@ -127,7 +128,10 @@ abstract class AppRouter {
         pageBuilder: (context, state) {
           return TransitionAnimation.zoomInAnimatition(
             state,
-            route: const ChatBotView(),
+            route: BlocProvider(
+              create: (context) => ChatbotCubit(dio: Dio()),
+              child: const ChatBotView(),
+            ),
           );
         },
       ),
