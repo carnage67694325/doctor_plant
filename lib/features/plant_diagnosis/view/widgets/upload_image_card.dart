@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:doct_plant/core/utils/appcolor.dart';
-import 'package:doct_plant/features/plant_diagnosis/view/view_model/cubit/plant_diagonsis_cubit.dart';
+import 'package:doct_plant/features/plant_diagnosis/view/view_model/upload_image_cubit/plant_diagonsis_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,16 +19,16 @@ class _UploadImageCardState extends State<UploadImageCard> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PlantDiagonsisCubit, PlantDiagonsisState>(
+    return BlocConsumer<UpLoadImageCubit, UploadImageState>(
       listener: (context, state) {
-        if (state is PlantDiagonsisSucces) {
+        if (state is UploadImageSucces) {
           imagePath = state.imagePath;
         }
       },
       builder: (context, state) {
         return GestureDetector(
             onTap: () {
-              BlocProvider.of<PlantDiagonsisCubit>(context).pickImage();
+              BlocProvider.of<UpLoadImageCubit>(context).pickImage();
             },
             child: Container(
                 decoration: BoxDecoration(

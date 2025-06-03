@@ -48,4 +48,16 @@ class ApiService {
     );
     return response.data;
   }
+
+  Future<Map<String, dynamic>> analyzeImage({
+    required String endpoint,
+    required String imageToken,
+  }) async {
+    var response = await dio.post('$baseUrl$endpoint',
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+          "Authorization": "Bearer $imageToken"
+        }));
+    return response.data;
+  }
 }

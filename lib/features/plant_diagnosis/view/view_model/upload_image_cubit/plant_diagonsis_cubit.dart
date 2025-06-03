@@ -14,27 +14,27 @@ import 'package:meta/meta.dart';
 
 part 'plant_diagonsis_state.dart';
 
-class PlantDiagonsisCubit extends Cubit<PlantDiagonsisState> {
+class UpLoadImageCubit extends Cubit<UploadImageState> {
   final ApiService apiService;
 
-  PlantDiagonsisCubit(
+  UpLoadImageCubit(
     this.apiService,
-  ) : super(PlantDiagonsisInitial());
+  ) : super(UploadImageInitial());
   Future<void> pickImage() async {
     try {
-      emit(PlantDiagonsisLoading());
+      emit(UpLoadImageLoading());
 
       final ImagePicker picker = ImagePicker();
       final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
       if (image != null) {
         await PrefasHandelr.storeUserProfileImagePath(image.path);
-        emit(PlantDiagonsisSucces(imagePath: image.path));
+        emit(UploadImageSucces(imagePath: image.path));
 
         // Upload image after storing and emitting success
         final String? userToken = await PrefasHandelr.getAuthToken();
         if (userToken == null) {
-          emit(PlantDiagonsisFailure(erroMessage: "Missing user token"));
+          emit(UploadImageFailure(erroMessage: "Missing user token"));
           return;
         }
 
@@ -42,10 +42,10 @@ class PlantDiagonsisCubit extends Cubit<PlantDiagonsisState> {
         await uploadImageToAPI(
             imageFile, userToken); // Fire and forget (or await for status)
       } else {
-        emit(PlantDiagonsisFailure(erroMessage: 'No image selected'));
+        emit(UploadImageFailure(erroMessage: 'No image selected'));
       }
     } catch (e) {
-      emit(PlantDiagonsisFailure(erroMessage: 'Error picking image: $e'));
+      emit(UploadImageFailure(erroMessage: 'Error picking image: $e'));
     }
   }
 
@@ -72,11 +72,11 @@ class PlantDiagonsisCubit extends Cubit<PlantDiagonsisState> {
       return right(imageToken);
     } on DioException catch (dioError) {
       final failure = ServerFailure.fromDioException(dioError);
-      emit(PlantDiagonsisFailure(erroMessage: failure.errMessage));
+      emit(UploadImageFailure(erroMessage: failure.errMessage));
       return left(failure);
     } catch (e) {
       final failure = ServerFailure(e.toString());
-      emit(PlantDiagonsisFailure(erroMessage: failure.errMessage));
+      emit(UploadImageFailure(erroMessage: failure.errMessage));
       return left(failure);
     }
   }

@@ -10,7 +10,7 @@ import 'package:doct_plant/features/dr_plant_hub/view/dr_plant_hub_view.dart';
 import 'package:doct_plant/features/fertillizer/view/fertillizer_view.dart';
 import 'package:doct_plant/features/home/view/home_view.dart';
 import 'package:doct_plant/features/plant_diagnosis/view/plant_diagnosis_view.dart';
-import 'package:doct_plant/features/plant_diagnosis/view/view_model/cubit/plant_diagonsis_cubit.dart';
+import 'package:doct_plant/features/plant_diagnosis/view/view_model/upload_image_cubit/plant_diagonsis_cubit.dart';
 import 'package:doct_plant/features/splash/splash_veiw.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -105,7 +105,7 @@ abstract class AppRouter {
           return TransitionAnimation.zoomInAnimatition(
             state,
             route: BlocProvider(
-              create: (context) => PlantDiagonsisCubit(ApiService(Dio())),
+              create: (context) => UpLoadImageCubit(ApiService(Dio())),
               child: const PlantDiagnosisView(),
             ),
           );
