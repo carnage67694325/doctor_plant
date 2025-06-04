@@ -12,5 +12,5 @@ final class ReportProblemSuccess extends ReportProblemState {}
 final class ReportProblemFaiulre extends ReportProblemState {
   final String errMessage;
 
-  ReportProblemFaiulre(this.errMessage);
+  ReportProblemFaiulre({required this.errMessage});
 }

@@ -15,6 +15,7 @@ import 'package:doct_plant/features/plant_diagnosis/view/plant_diagnosis_view.da
 import 'package:doct_plant/features/plant_diagnosis/view/view_model/image_analysis/image_analysis_cubit.dart';
 import 'package:doct_plant/features/plant_diagnosis/view/view_model/upload_image_cubit/plant_diagonsis_cubit.dart';
 import 'package:doct_plant/features/report_problem/view/report_problem_view.dart';
+import 'package:doct_plant/features/report_problem/view/view_model/report_problem/report_problem_cubit.dart';
 import 'package:doct_plant/features/splash/splash_veiw.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -143,7 +144,7 @@ abstract class AppRouter {
           return TransitionAnimation.zoomInAnimatition(
             state,
             route: BlocProvider(
-              create: (context) => ChatbotCubit(dio: Dio()),
+              create: (context) => ReportProblemCubit(ApiService(Dio())),
               child: const ReportProblemView(),
             ),
           );

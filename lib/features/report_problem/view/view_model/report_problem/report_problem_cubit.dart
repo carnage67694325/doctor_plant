@@ -12,7 +12,7 @@ part 'report_problem_state.dart';
 class ReportProblemCubit extends Cubit<ReportProblemState> {
   final ApiService apiService;
   ReportProblemCubit(this.apiService) : super(ReportProblemInitial());
-  Future<Either<Failure, void>> login(String desc) async {
+  Future<Either<Failure, void>> sumbitProblem(String desc) async {
     emit(ReportProblemLoading());
 
     try {
