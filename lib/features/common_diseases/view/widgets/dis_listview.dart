@@ -1,4 +1,3 @@
-import 'package:doct_plant/features/dr_plant_hub/view/widgets/hub_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:doct_plant/features/common_diseases/model/dis_model.dart';
 import 'package:doct_plant/features/common_diseases/view/widgets/dis_card.dart';

@@ -1,14 +1,15 @@
 import 'dart:developer';
 
+import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
 import 'package:doct_plant/features/chat_bot/view/view_model/cubit/chatbot_cubit.dart';
 import 'package:doct_plant/features/chat_bot/view/widgets/chat_bot_messages_list.dart';
 import 'package:doct_plant/features/chat_bot/view/widgets/chat_bubble.dart';
-import 'package:doct_plant/features/chat_bot/view/widgets/chatbot_response.dart';
 import 'package:doct_plant/features/chat_bot/view/widgets/send_prompt_textfiled.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ChatBotViewBody extends StatefulWidget {
   const ChatBotViewBody({super.key});
@@ -51,10 +52,11 @@ class _ChatBotViewBodyState extends State<ChatBotViewBody> {
                 SnackBar(content: Text(state.errMessage)),
               );
             } else if (state is ChatbotLoading && !isLoadingAdded) {
-              messages.add(const Center(
+              messages.add(Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 12.0),
-                  child: CircularProgressIndicator(),
+                  child: LoadingAnimationWidget.inkDrop(
+                      color: AppColors.signUpButtoColor, size: 50.h),
                 ),
               ));
               isLoadingAdded = true;

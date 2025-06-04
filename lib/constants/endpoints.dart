@@ -3,4 +3,5 @@ abstract class Endpoints {
   static const String kRegister = 'Account/register';
   static const String kUploadImage = 'PlantDiagnosis/upload';
   static const String kAnalyzeImage = 'PlantDiagnosis/diagnose';
+  static const String kReportProblem = 'ReportProblem';
 }

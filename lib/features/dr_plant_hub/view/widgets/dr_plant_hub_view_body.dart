@@ -70,7 +70,9 @@ class DrPlantHubViewBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     HubTile(
-                      onTap: () {},
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kReportProblem);
+                      },
                       text: "Report a problem",
                       icon: Icons.warning,
                     ),

@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -29,6 +26,19 @@ class ApiService {
     var response = await dio.post('$baseUrl$endpoint',
         data: body,
         options: Options(headers: {'Content-Type': 'application/json'}));
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> postReportProblem(
+      {required String endpoint,
+      required Map<String, dynamic>? body,
+      required String userToken}) async {
+    var response = await dio.post('$baseUrl$endpoint',
+        data: body,
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+          "Authorization": "Bearer $userToken",
+        }));
     return response.data;
   }
 

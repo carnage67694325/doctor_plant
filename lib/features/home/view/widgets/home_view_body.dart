@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:doct_plant/constants/assets.dart';
 import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';

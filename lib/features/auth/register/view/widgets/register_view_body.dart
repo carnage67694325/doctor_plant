@@ -2,12 +2,10 @@ import 'dart:developer';
 
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/core/utils/functions/error_snack.dart';
-import 'package:doct_plant/core/utils/functions/success_snack.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
 import 'package:doct_plant/core/utils/widgets/email_textfield.dart';
 import 'package:doct_plant/core/utils/widgets/name_textfield.dart';
 import 'package:doct_plant/core/utils/widgets/password_textfield.dart';
-import 'package:doct_plant/features/auth/login/view/view_model.dart/cubit/login_cubit.dart';
 import 'package:doct_plant/features/auth/register/view_model.dart/cubit/register_cubit.dart';
 import 'package:doct_plant/features/home/view/widgets/custom_elvated_button.dart';
 import 'package:flutter/material.dart';

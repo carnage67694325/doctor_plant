@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/core/utils/functions/error_snack.dart';
-import 'package:doct_plant/core/utils/functions/success_snack.dart';
 import 'package:doct_plant/core/utils/widgets/email_textfield.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
 import 'package:doct_plant/core/utils/widgets/password_textfield.dart';

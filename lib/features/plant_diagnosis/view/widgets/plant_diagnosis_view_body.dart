@@ -1,6 +1,4 @@
-import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
-import 'package:doct_plant/features/home/view/widgets/custom_elvated_button.dart';
 import 'package:doct_plant/features/plant_diagnosis/view/view_model/upload_image_cubit/plant_diagonsis_cubit.dart';
 import 'package:doct_plant/features/plant_diagnosis/view/widgets/anaylze_button.dart';
 import 'package:doct_plant/features/plant_diagnosis/view/widgets/upload_image_card.dart';

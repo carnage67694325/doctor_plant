@@ -1,7 +1,6 @@
 import 'package:doct_plant/core/utils/appcolor.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
 import 'package:doct_plant/features/fertillizer/view/widgets/fert_listview.dart';
-import 'package:doct_plant/features/fertillizer/view/widgets/fert_tip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,9 +1,7 @@
 import 'package:doct_plant/constants/assets.dart';
 import 'package:doct_plant/core/Preferences/prefs_handler.dart';
-import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/features/splash/widgets/animated_logo.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
