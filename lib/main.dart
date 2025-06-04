@@ -9,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   await PrefasHandelr.init();
-
   await dotenv.load(fileName: "lib/.env");
   Bloc.observer = SimpleBlocObserver();
   runApp(const DoctorPlant());

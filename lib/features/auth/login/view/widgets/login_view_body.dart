@@ -22,29 +22,27 @@ class LoginViewBody extends StatefulWidget {
 class _LoginViewBodyState extends State<LoginViewBody> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DrPlantBackground(
-          child: SingleChildScrollView(
-        child: BlocConsumer<LoginCubit, LoginState>(
-          listener: (context, state) {
-            if (state is LoginSuccess) {
-              GoRouter.of(context).push(AppRouter.kDrHub);
-            } else if (state is LoginFaiulre) {
-              errorSnackBar(context, state.erroMessage);
-              log(state.erroMessage);
-            }
-          },
-          builder: (context, state) {
-            return Expanded(
-              child: Column(
+        child: SingleChildScrollView(
+          child: BlocConsumer<LoginCubit, LoginState>(
+            listener: (context, state) {
+              if (state is LoginSuccess) {
+                GoRouter.of(context).push(AppRouter.kDrHub);
+              } else if (state is LoginFaiulre) {
+                errorSnackBar(context, state.erroMessage);
+                log(state.erroMessage);
+              }
+            },
+            builder: (context, state) {
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 300.h,
-                  ),
+                  SizedBox(height: 300.h),
                   EmailTextField(
                     controller: _emailController,
                     hintText: 'Enter your email',
@@ -53,9 +51,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     },
                     labelText: "Email",
                   ),
-                  SizedBox(
-                    height: 24.h,
-                  ),
+                  SizedBox(height: 24.h),
                   PasswordTextField(
                     controller: _passwordController,
                     hintText: 'Enter your password',
@@ -63,14 +59,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       log('Password changed');
                     },
                   ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
+                  SizedBox(height: 16.h),
                   CustomElvatedButton(
                     child: state is LoginLoading
-                        ? CircularProgressIndicator(
-                            color: Colors.white,
-                          )
+                        ? CircularProgressIndicator(color: Colors.white)
                         : const Text(
                             'Login',
                             style: TextStyle(
@@ -82,21 +74,19 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       if (_emailController.text.isNotEmpty &&
                           _passwordController.text.isNotEmpty) {
                         await BlocProvider.of<LoginCubit>(context).login(
-                            _emailController.text, _passwordController.text);
+                          _emailController.text,
+                          _passwordController.text,
+                        );
                       }
                     },
                   ),
-                  SizedBox(
-                    height: 14.h,
-                  ),
+                  SizedBox(height: 14.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Don't have an account?",
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                        ),
+                        style: TextStyle(fontSize: 20.sp),
                       ),
                       TextButton(
                         onPressed: () {
@@ -104,20 +94,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         },
                         child: const Text(
                           'Register',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.blue,
-                          ),
+                          style: TextStyle(fontSize: 20, color: Colors.blue),
                         ),
                       )
                     ],
-                  )
+                  ),
                 ],
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
-      )),
+      ),
     );
   }
 }

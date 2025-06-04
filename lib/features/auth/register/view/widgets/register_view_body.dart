@@ -31,36 +31,31 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DrPlantBackground(
-          child: SingleChildScrollView(
-        child: BlocConsumer<RegisterCubit, RegisterState>(
-          listener: (context, state) {
-            if (state is RegisterSuccess) {
-              GoRouter.of(context).push(AppRouter.kLogin);
-            } else if (state is RegisterFailure) {
-              errorSnackBar(context, state.erroMessage);
-              log(state.erroMessage);
-            }
-          },
-          builder: (context, state) {
-            return Expanded(
-              child: Column(
+        child: SingleChildScrollView(
+          child: BlocConsumer<RegisterCubit, RegisterState>(
+            listener: (context, state) {
+              if (state is RegisterSuccess) {
+                GoRouter.of(context).push(AppRouter.kLogin);
+              } else if (state is RegisterFailure) {
+                errorSnackBar(context, state.erroMessage);
+                log(state.erroMessage);
+              }
+            },
+            builder: (context, state) {
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 300.h,
-                  ),
+                  SizedBox(height: 300.h),
                   NameTextField(
                     controller: _nameController,
-                    hintText: 'Enter your email',
+                    hintText: 'Enter your name',
                     onChanged: (value) {
-                      log('Email changed: $value');
+                      log('Name changed: $value');
                     },
                     labelText: "Name",
                   ),
-                  SizedBox(
-                    height: 14.h,
-                  ),
+                  SizedBox(height: 14.h),
                   EmailTextField(
                     controller: _emailController,
                     hintText: 'Enter your email',
@@ -69,9 +64,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     },
                     labelText: "Email",
                   ),
-                  SizedBox(
-                    height: 24.h,
-                  ),
+                  SizedBox(height: 24.h),
                   PasswordTextField(
                     controller: _passwordController,
                     hintText: 'Enter your password',
@@ -80,25 +73,19 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       log('Password changed');
                     },
                   ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
+                  SizedBox(height: 16.h),
                   PasswordTextField(
                     controller: _passwordConfirmController,
-                    hintText: 'Enter your password',
+                    hintText: 'Confirm your password',
                     showStrengthIndicator: false,
                     onChanged: (value) {
-                      log('Password changed');
+                      log('Password confirmation changed');
                     },
                   ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
+                  SizedBox(height: 16.h),
                   CustomElvatedButton(
                     child: state is RegisterLoading
-                        ? CircularProgressIndicator(
-                            color: Colors.white,
-                          )
+                        ? CircularProgressIndicator(color: Colors.white)
                         : const Text(
                             'Register',
                             style: TextStyle(
@@ -117,15 +104,13 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       }
                     },
                   ),
-                  SizedBox(
-                    height: 14.h,
-                  ),
+                  SizedBox(height: 14.h),
                 ],
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
-      )),
+      ),
     );
   }
 
