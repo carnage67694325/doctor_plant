@@ -1,4 +1,5 @@
 import 'package:doct_plant/core/utils/appcolor.dart';
+import 'package:doct_plant/core/utils/approuter.dart';
 import 'package:doct_plant/core/utils/functions/error_snack.dart';
 import 'package:doct_plant/core/utils/functions/success_snack.dart';
 import 'package:doct_plant/core/utils/widgets/dr_plant_background.dart';
@@ -7,6 +8,7 @@ import 'package:doct_plant/features/report_problem/view/widgets/report_problem_t
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ReportProblemViewBody extends StatefulWidget {
@@ -50,8 +52,29 @@ class _ReportProblemViewBodyState extends State<ReportProblemViewBody> {
           },
           builder: (context, state) {
             return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                SizedBox(height: 100.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.tileColor,
+                            minimumSize: Size(100.w, 50.h)),
+                        onPressed: () {
+                          GoRouter.of(context).push(AppRouter.kFeedback);
+                        },
+                        child: Text(
+                          'Feedback',
+                          style: TextStyle(color: Colors.white),
+                        )),
+                  ],
+                ),
+                SizedBox(height: 175.h),
                 ReportPoblemTextfiled(
                   controller: textEditingController,
                 ),

@@ -9,6 +9,7 @@ import 'package:doct_plant/features/chat_bot/view/chat_bot_view.dart';
 import 'package:doct_plant/features/chat_bot/view/view_model/cubit/chatbot_cubit.dart';
 import 'package:doct_plant/features/common_diseases/view/common_dis_view.dart';
 import 'package:doct_plant/features/dr_plant_hub/view/dr_plant_hub_view.dart';
+import 'package:doct_plant/features/feedback/view/feedback_view.dart';
 import 'package:doct_plant/features/fertillizer/view/fertillizer_view.dart';
 import 'package:doct_plant/features/home/view/home_view.dart';
 import 'package:doct_plant/features/plant_diagnosis/view/plant_diagnosis_view.dart';
@@ -31,6 +32,7 @@ abstract class AppRouter {
   static final kPlantDiag = '/PlantDiag';
   static final kChatbot = '/chatbot';
   static final kReportProblem = '/reportProblem';
+  static final kFeedback = '/feedback';
 
   static final router = GoRouter(
     routes: [
@@ -146,6 +148,18 @@ abstract class AppRouter {
             route: BlocProvider(
               create: (context) => ReportProblemCubit(ApiService(Dio())),
               child: const ReportProblemView(),
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: kFeedback,
+        pageBuilder: (context, state) {
+          return TransitionAnimation.zoomInAnimatition(
+            state,
+            route: BlocProvider(
+              create: (context) => ReportProblemCubit(ApiService(Dio())),
+              child: const FeedbackView(),
             ),
           );
         },
