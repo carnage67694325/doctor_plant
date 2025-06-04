@@ -25,7 +25,7 @@ class _FeedbackCardState extends State<FeedbackCard>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 200),
       vsync: this,
     );
 

@@ -10,6 +10,7 @@ import 'package:doct_plant/features/chat_bot/view/view_model/cubit/chatbot_cubit
 import 'package:doct_plant/features/common_diseases/view/common_dis_view.dart';
 import 'package:doct_plant/features/dr_plant_hub/view/dr_plant_hub_view.dart';
 import 'package:doct_plant/features/feedback/view/feedback_view.dart';
+import 'package:doct_plant/features/feedback/view/view_model/cubit/view_feedback_cubit.dart';
 import 'package:doct_plant/features/fertillizer/view/fertillizer_view.dart';
 import 'package:doct_plant/features/home/view/home_view.dart';
 import 'package:doct_plant/features/plant_diagnosis/view/plant_diagnosis_view.dart';
@@ -158,7 +159,7 @@ abstract class AppRouter {
           return TransitionAnimation.zoomInAnimatition(
             state,
             route: BlocProvider(
-              create: (context) => ReportProblemCubit(ApiService(Dio())),
+              create: (context) => ViewFeedbackCubit(ApiService(Dio())),
               child: const FeedbackView(),
             ),
           );
